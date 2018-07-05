@@ -14,4 +14,10 @@ public interface BankRMIinterface extends Remote {
     boolean validateUser(String userName) throws Exception;
     
     boolean validateUserPass(String userName, String password) throws Exception;
+    
+    double checkBalance(String user) throws Exception;
+    
+    double deposit(double amount) throws Exception;
+    
+    double withdraw(double amount) throws Exception;
 }
