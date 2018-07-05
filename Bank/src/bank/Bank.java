@@ -27,18 +27,18 @@ public class Bank {
         Account acc1 = new Account();
         acc1.setAccName("Account1");
         acc1.setAccNumber("343454");
-        acc1.setBalance(0);
+        acc1.setBalance(50);
         
         Account acc2 = new Account();
         acc2.setAccName("Account2");
-        acc1.setAccNumber("348394");
-        acc1.setBalance(0);
+        acc2.setAccNumber("348394");
+        acc2.setBalance(60);
         
         
         Account acc3 = new Account();
-        acc1.setAccName("Account3");
-        acc1.setAccNumber("345451");
-        acc1.setBalance(0);
+        acc3.setAccName("Account3");
+        acc3.setAccNumber("345451");
+        acc3.setBalance(70);
         
         accountsMap.put("abc", acc1);
         accountsMap.put("def", acc2);

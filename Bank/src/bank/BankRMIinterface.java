@@ -20,4 +20,9 @@ public interface BankRMIinterface extends Remote {
     double deposit(double amount) throws Exception;
     
     double withdraw(double amount) throws Exception;
+    
+    boolean checkValidAccount(String accNumber) throws Exception;
+    
+    double transfer(double amount) throws Exception;
+    
 }

@@ -82,7 +82,26 @@ public class BankRMIClient {
                                             }
                                         }
                                         break;
-                                case 4: break;
+                                case 4: System.out.println("Enter the account number to which amount to be transfered:");
+                                        String accNumber = sc.next();
+                                        boolean isAccPresent = bri.checkValidAccount(accNumber);
+                                        if(isAccPresent){
+                                            System.out.println("Enter the amount to transfer");
+                                            amount = sc.nextDouble();
+                                            if(amount<=0){
+                                                System.err.println("Invalid amount");
+                                            }else{
+                                                balance = bri.transfer(amount);
+                                                if(balance == -1){
+                                                    System.err.println("Not enough balance to transfer");
+                                                }else{
+                                                    System.out.println("Transfer successfull. The current balance is: "+balance);
+                                                }
+                                            }
+                                        }else{
+                                            System.err.println("The account number is invalid");
+                                        }
+                                        break;
                                 case 5: break;
                                 default : break;
                             }
