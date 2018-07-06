@@ -20,8 +20,7 @@ public interface BankRMIinterface extends Remote {
     String fetchAccountNumber() throws Exception;
     
     String fetchAccountName() throws Exception;
-    
-    
+        
     double deposit(double amount) throws Exception;
     
     double withdraw(double amount) throws Exception;

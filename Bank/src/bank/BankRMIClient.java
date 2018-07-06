@@ -13,7 +13,6 @@ import java.rmi.registry.Registry;
 import java.util.Scanner;
 
 /**
- *
  * @author jhansivsetty
  * 1. incorrect username
  * 2. incorrect password
@@ -34,6 +33,7 @@ public class BankRMIClient {
                 String userName = sc.next();
                 int option = 0;
                 double balance,amount;
+                long startTime, endTime;
                 
                 boolean isValidUser = bri.validateUser(userName);
                 if(isValidUser){
@@ -72,17 +72,24 @@ public class BankRMIClient {
                                         break;
                                 case 4: //To deposit an amount
                                         System.out.println("Enter the amount to deposit:");
+                                        startTime = System.nanoTime();
                                         amount = sc.nextDouble();
                                         //System.out.println("The amount is:"+amount);
                                         balance = bri.deposit(amount);
                                         if(balance <0){
                                             System.err.println("Invalid amount. Enter valid amount between 0 to 10000.");
+                                            
                                         }else{
                                             System.out.println("Deposit Successful, Current balance is: "+ balance);
                                         }
+                                        //End Time
+                                        endTime = System.nanoTime();
+                                        System.out.println("The transaction took "+((endTime - startTime)/1000) + "ms"); 
                                         break;
                                 case 5: //To withdraw an amount
                                         System.out.println("Enter the amount to withdraw");
+                                        //Start time
+                                        startTime = System.nanoTime();
                                         amount = sc.nextDouble();
                                         if(amount<=0){
                                             System.err.println("Enter valid amount");
@@ -94,9 +101,14 @@ public class BankRMIClient {
                                                 System.out.println("Withdraw Successfull. Current balance is: "+balance);
                                             }
                                         }
+                                        //End Time
+                                        endTime = System.nanoTime();
+                                        System.out.println("The transaction took "+((endTime - startTime)/1000) + "ms"); 
                                         break;
                                 case 6: //To transfer an amount
                                         System.out.println("Enter the account number to which amount to be transfered:");
+                                        //Start time
+                                        startTime = System.nanoTime();
                                         accNumber = sc.next();
                                         boolean isAccPresent = bri.checkValidAccount(accNumber);
                                         if(isAccPresent){
@@ -115,6 +127,9 @@ public class BankRMIClient {
                                         }else{
                                             System.err.println("The account number is invalid");
                                         }
+                                        //End Time
+                                        endTime = System.nanoTime();
+                                        System.out.println("The transaction took "+((endTime - startTime)/1000) + "ms"); 
                                         break;
                                 case 7: break;
                                 default : break;
