@@ -8,10 +8,6 @@ package bank;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author jhansivsetty
- */
 public class Bank {
     public Map userCred(){
         Map<String, String> credentials = new HashMap<>();
@@ -21,22 +17,26 @@ public class Bank {
         return credentials;
     } 
     
+    /**
+     * Creating three accounts and adding them on to a map
+     * @return 
+     */
     public Map buildAccounts(){
         Map<String, Account> accountsMap = new HashMap<>();
         
         Account acc1 = new Account();
-        acc1.setAccName("Account1");
+        acc1.setAccName("Account 1");
         acc1.setAccNumber("343454");
         acc1.setBalance(50);
         
         Account acc2 = new Account();
-        acc2.setAccName("Account2");
+        acc2.setAccName("Account 2");
         acc2.setAccNumber("348394");
         acc2.setBalance(60);
         
         
         Account acc3 = new Account();
-        acc3.setAccName("Account3");
+        acc3.setAccName("Account 3");
         acc3.setAccNumber("345451");
         acc3.setBalance(70);
         

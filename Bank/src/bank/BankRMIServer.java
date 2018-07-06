@@ -57,8 +57,18 @@ public class BankRMIServer extends UnicastRemoteObject implements BankRMIinterfa
 
     //To check the balance of the user
     @Override
-    public double checkBalance(String user) throws Exception {
+    public double checkBalance() throws Exception {
         return selectedAccount.getBalance();
+    }
+    
+    @Override
+    public String fetchAccountNumber() throws Exception {
+        return selectedAccount.getAccNumber();
+    }
+
+    @Override
+    public String fetchAccountName() throws Exception {
+        return selectedAccount.getAccName();
     }
 
     //To deposit amount only if it is between 0 and 10000
@@ -122,6 +132,4 @@ public class BankRMIServer extends UnicastRemoteObject implements BankRMIinterfa
         }
         return selectedAccount.getBalance();
     }
-
-    
 }

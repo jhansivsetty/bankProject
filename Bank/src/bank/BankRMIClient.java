@@ -42,34 +42,47 @@ public class BankRMIClient {
                     boolean isValidUserPass = bri.validateUserPass(userName, password);
                     if(isValidUserPass){
                         System.out.println("------Login Successfull------");
-                        while(option != 5){
+                        while(option != 7){
                             System.out.println("\nChoose the operation to perform:");
                             System.out.println("1. Check Balance");
-                            System.out.println("2. Deposit");
-                            System.out.println("3. Withdraw");
-                            System.out.println("4. Transfer");
-                            System.out.println("5. Exit");
+                            System.out.println("2. Display account number");
+                            System.out.println("3. Display Account name");
+                            System.out.println("4. Deposit");
+                            System.out.println("5. Withdraw");
+                            System.out.println("6. Transfer");
+                            System.out.println("7. Exit");
                             
                             option = sc.nextInt();
-                            if(option >5 || option<1){
+                            if(option >7 || option<1){
                                 System.err.println("Invalid option\n");
                             }
                             
                             switch(option){
-                                case 1: balance = bri.checkBalance(userName);
+                                case 1: // To check the balance
+                                        balance = bri.checkBalance();
                                         System.out.println("The current balance is :"+balance);
                                         break;
-                                case 2: System.out.println("Enter the amount to deposit:");
+                                case 2: // To get the account number
+                                        String accNumber = bri.fetchAccountNumber();
+                                        System.out.println("The Account number is: "+accNumber);
+                                        break;
+                                case 3: //To get the account name
+                                        String accName = bri.fetchAccountName();
+                                        System.out.println("The acocunt name is: "+accName);
+                                        break;
+                                case 4: //To deposit an amount
+                                        System.out.println("Enter the amount to deposit:");
                                         amount = sc.nextDouble();
                                         //System.out.println("The amount is:"+amount);
                                         balance = bri.deposit(amount);
                                         if(balance <0){
                                             System.err.println("Invalid amount. Enter valid amount between 0 to 10000.");
                                         }else{
-                                            System.out.println("Deposit Successfull, Current balance is: "+ balance);
+                                            System.out.println("Deposit Successful, Current balance is: "+ balance);
                                         }
                                         break;
-                                case 3: System.out.println("Enter the amount to withdraw");
+                                case 5: //To withdraw an amount
+                                        System.out.println("Enter the amount to withdraw");
                                         amount = sc.nextDouble();
                                         if(amount<=0){
                                             System.err.println("Enter valid amount");
@@ -82,8 +95,9 @@ public class BankRMIClient {
                                             }
                                         }
                                         break;
-                                case 4: System.out.println("Enter the account number to which amount to be transfered:");
-                                        String accNumber = sc.next();
+                                case 6: //To transfer an amount
+                                        System.out.println("Enter the account number to which amount to be transfered:");
+                                        accNumber = sc.next();
                                         boolean isAccPresent = bri.checkValidAccount(accNumber);
                                         if(isAccPresent){
                                             System.out.println("Enter the amount to transfer");
@@ -102,7 +116,7 @@ public class BankRMIClient {
                                             System.err.println("The account number is invalid");
                                         }
                                         break;
-                                case 5: break;
+                                case 7: break;
                                 default : break;
                             }
                          
